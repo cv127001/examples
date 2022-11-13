@@ -14,15 +14,6 @@ fn gcd(mut n: u64, mut m: u64) -> u64 {
     n
 }
 
-#[test]
-fn test_gcd() {
-    assert_eq!(gcd(14, 15), 1);
-
-    assert_eq!(gcd(2 * 3 * 5 * 11 * 17,
-                   3 * 7 * 11 * 13 * 19),
-               3 * 11);
-}
-
 use std::str::FromStr;
 use std::env;
 
@@ -34,7 +25,7 @@ fn main() {
                      .expect("error parsing argument"));
     }
 
-    if numbers.len() == 0 {
+    if numbers.len() < 2 {
         eprintln!("Usage: gcd NUMBER ...");
         std::process::exit(1);
     }
@@ -46,4 +37,14 @@ fn main() {
 
     println!("The greatest common divisor of {:?} is {}",
              numbers, d);
+}
+
+
+#[test]
+fn test_gcd() {
+    assert_eq!(gcd(14, 15), 1);
+
+    assert_eq!(gcd(2 * 3 * 5 * 11 * 17,
+                   3 * 7 * 11 * 13 * 19),
+               3 * 11);
 }
